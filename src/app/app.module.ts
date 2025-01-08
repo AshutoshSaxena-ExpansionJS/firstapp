@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CapitalizeFirstLastPipe } from './capitalize-first-last.pipe';
 import { DynamicListComponent } from './dynamic-list/dynamic-list.component';
+import { ItemDisplayComponent } from './item-display/item-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CapitalizeFirstLastPipe,
-    DynamicListComponent
+    DynamicListComponent,
+    ItemDisplayComponent
   ],
   imports: [
     BrowserModule,

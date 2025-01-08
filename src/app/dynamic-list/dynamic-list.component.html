@@ -1,7 +1,7 @@
 <div class="p-4">
     <h3 class="text-2xl font-bold text-blue-600">Dynamic List</h3>
     <ul class="list-disc list-inside mt-2">
-      <li *ngFor="let item of items" class="py-1 px-2 bg-gray-100 rounded-md my-1">{{ item | capitalizeFirstLast }}</li>
+      <li *ngFor="let item of displayedItems" class="py-1 px-2 bg-gray-100 rounded-md my-1"><app-item-display [item]="item"></app-item-display></li>
     </ul>
   </div>
   
