@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/core';
-
+import { ReversePipe } from '../reverse.pipe';
 @Component({
   selector: 'app-item-display',
   standalone: false,
@@ -10,11 +10,24 @@ import { Component, Input, OnInit, SimpleChanges, OnChanges } from '@angular/cor
       margin: 5px;
       border-radius: 5px;
     }
-  `]
+  `],
+  providers: [ReversePipe]
 })
 export class ItemDisplayComponent implements OnInit, OnChanges {
-  @Input() item: string='';
-  bgColor: string = 'white';
+  private _item: string = ''; 
+  reversedItem: string = ''; 
+  bgColor: string = 'white'
+
+  constructor(private reversePipe: ReversePipe) {}
+  
+  @Input()
+  set item(value: string) { 
+    this._item = value; 
+    this.reversedItem = this.reversePipe.transform(value);
+  }
+  get item(): string { 
+    return this._item; 
+  }
 
   ngOnInit() {
     console.log('ngOnInit - ItemDisplayComponent initialized');

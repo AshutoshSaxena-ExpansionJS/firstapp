@@ -11,6 +11,7 @@ import { CapitalizeFirstLastPipe } from '../capitalize-first-last.pipe';
 export class DynamicListComponent implements OnInit {
   items: string[] = ['angular', 'typescript', 'component', 'directive', 'pipe'];
   displayedItems: string[] = [];
+  currentInput: string = '';
 
   constructor(private capitalizeFirstLastPipe: CapitalizeFirstLastPipe) {}
 
@@ -27,5 +28,16 @@ export class DynamicListComponent implements OnInit {
         console.log('New item displayed:', transformedItem);
       }, 1000 * index);
     });
+  }
+  updateCurrentInput(value: string) {
+     this.currentInput = value; 
+  }
+
+  addItem(value: string) { 
+    if (value) { 
+      const transformedItem = this.capitalizeFirstLastPipe.transform(value); 
+      this.displayedItems.push(transformedItem); 
+      console.log('New item added:', transformedItem); 
+    } 
   }
 }
