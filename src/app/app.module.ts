@@ -12,6 +12,11 @@ import { CreationOperatorsComponent } from './creation-operators/creation-operat
 import { TransformationOperatorsComponent } from './transformation-operators/transformation-operators.component';
 import { FilteringOperatorsComponent } from './filtering-operators/filtering-operators.component';
 import { CombinationOperatorsComponent } from './combination-operators/combination-operators.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { ContentexampleComponent } from './contentexample/contentexample.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CustomValidators } from './validators/custom-validators';
 
 @NgModule({
   declarations: [
@@ -24,11 +29,15 @@ import { CombinationOperatorsComponent } from './combination-operators/combinati
     CreationOperatorsComponent,
     TransformationOperatorsComponent,
     FilteringOperatorsComponent,
-    CombinationOperatorsComponent
+    CombinationOperatorsComponent,
+    RegistrationComponent,
+    LoginComponent,
+    ContentexampleComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

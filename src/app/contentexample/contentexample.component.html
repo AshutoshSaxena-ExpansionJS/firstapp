@@ -1,0 +1,8 @@
+<ng-container *ngIf="true">
+    <ng-template #template let-name="name">
+      <div>Hello, {{ name }}!</div>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="template; context: { name: 'Angular' }"></ng-container>
+  </ng-container>
+  
+  <ng-content></ng-content>

@@ -4,14 +4,29 @@ import { CreationOperatorsComponent } from './creation-operators/creation-operat
 import { TransformationOperatorsComponent } from './transformation-operators/transformation-operators.component';
 import { FilteringOperatorsComponent } from './filtering-operators/filtering-operators.component';
 import { CombinationOperatorsComponent } from './combination-operators/combination-operators.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { ContentexampleComponent } from './contentexample/contentexample.component';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/creation-operators', pathMatch: 'full' },
-  { path: 'creation-operators', component: CreationOperatorsComponent },
-  { path: 'transformation-operators', component: TransformationOperatorsComponent },
-  { path: 'filtering-operators', component: FilteringOperatorsComponent },
-  { path: 'combination-operators', component: CombinationOperatorsComponent },
-  { path: '**', redirectTo: '/creation-operators' }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegistrationComponent },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    canDeactivate: [AuthGuard],
+    children: [
+      { path: 'creation-operators', component: CreationOperatorsComponent },
+      { path: 'transformation-operators', component: TransformationOperatorsComponent },
+      { path: 'filtering-operators', component: FilteringOperatorsComponent },
+      { path: 'combination-operators', component: CombinationOperatorsComponent },
+      { path: 'contentexample', component: ContentexampleComponent },
+      { path: '**', redirectTo: '/creation-operators' }
+    ]
+  }
 ];
 
 @NgModule({

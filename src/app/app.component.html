@@ -2,11 +2,27 @@
   Hello world!
 </h1>
 <app-dynamic-list></app-dynamic-list>
-<nav>
-  <a routerLink="/creation-operators">Creation Operators</a> |
-  <a routerLink="/transformation-operators">Transformation Operators</a> |
-  <a routerLink="/filtering-operators">Filtering Operators</a> |
-  <a routerLink="/combination-operators">Combination Operators</a>
-</nav>
-<router-outlet></router-outlet>
-
+<div class="min-h-screen flex flex-col">
+  <nav class="bg-blue-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div>
+        <a routerLink="/login" class="px-4 py-2 hover:bg-blue-700 rounded">Login</a>
+        <a routerLink="/register" class="px-4 py-2 hover:bg-blue-700 rounded">Register</a>
+      </div>
+    </div>
+  </nav>
+  <div class="flex flex-1">
+    <aside class="w-64 bg-gray-200 p-4">
+      <nav>
+        <a routerLink="/creation-operators" class="block px-4 py-2 hover:bg-gray-300 rounded">Creation Operators</a>
+        <a routerLink="/transformation-operators" class="block px-4 py-2 hover:bg-gray-300 rounded">Transformation Operators</a>
+        <a routerLink="/filtering-operators" class="block px-4 py-2 hover:bg-gray-300 rounded">Filtering Operators</a>
+        <a routerLink="/combination-operators" class="block px-4 py-2 hover:bg-gray-300 rounded">Combination Operators</a>
+        <a routerLink="/contentexample" class="block px-4 py-2 hover:bg-gray-300 rounded">Content Example</a>
+      </nav>
+    </aside>
+    <main class="flex-1 p-4">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
