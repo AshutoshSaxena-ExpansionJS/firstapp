@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { CustomValidators } from '../validators/custom-validators';
 
 @Component({
@@ -17,8 +17,30 @@ export class RegistrationComponent implements OnInit {
     this.registrationForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, CustomValidators.passwordStrength]]
+      password: ['', [Validators.required, CustomValidators.passwordStrength]],
+      addresses: this.fb.array([this.createAddress()])
     });
+  }
+
+  createAddress(): FormGroup {
+    return this.fb.group({
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required]
+    });
+  }
+
+  get addresses(): FormArray {
+    return this.registrationForm.get('addresses') as FormArray;
+  }
+
+  addAddress(): void {
+    this.addresses.push(this.createAddress());
+  }
+
+  removeAddress(index: number): void {
+    this.addresses.removeAt(index);
   }
 
   onSubmit(): void {

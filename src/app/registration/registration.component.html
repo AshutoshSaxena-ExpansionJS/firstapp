@@ -1,29 +1,61 @@
 <div class="max-w-md mx-auto bg-white p-8 rounded shadow">
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-      <div class="mb-4">
-        <label for="username" class="block text-gray-700">Username</label>
-        <input id="username" formControlName="username" class="w-full px-3 py-2 border rounded">
-        <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-red-500">
-          Username is required and must be at least 3 characters long.
-        </div>
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="username" class="block text-gray-700">Username</label>
+      <input id="username" formControlName="username" class="w-full px-3 py-2 border rounded">
+      <div *ngIf="registrationForm.get('username')?.invalid && registrationForm.get('username')?.touched" class="text-red-500">
+        Username is required and must be at least 3 characters long.
       </div>
-  
-      <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
-        <input id="email" formControlName="email" class="w-full px-3 py-2 border rounded">
-        <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-red-500">
-          Enter a valid email.
-        </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-gray-700">Email</label>
+      <input id="email" formControlName="email" class="w-full px-3 py-2 border rounded">
+      <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="text-red-500">
+        Enter a valid email.
       </div>
-  
-      <div class="mb-4">
-        <label for="password" class="block text-gray-700">Password</label>
-        <input id="password" type="password" formControlName="password" class="w-full px-3 py-2 border rounded">
-        <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-red-500">
-          Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, and a number.
-        </div>
+    </div>
+
+    <div class="mb-4">
+      <label for="password" class="block text-gray-700">Password</label>
+      <input id="password" type="password" formControlName="password" class="w-full px-3 py-2 border rounded">
+      <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="text-red-500">
+        Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, and a number.
       </div>
-  
-      <button type="submit" [disabled]="registrationForm.invalid" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Register</button>
-    </form>
-  </div>
+    </div>
+
+    <div formArrayName="addresses">
+      <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i" class="mb-4">
+        <label for="street" class="block text-gray-700">Street</label>
+        <input id="street" formControlName="street" class="w-full px-3 py-2 border rounded">
+        <div *ngIf="address.get('street')?.invalid && address.get('street')?.touched" class="text-red-500">
+          Street is required.
+        </div>
+
+        <label for="city" class="block text-gray-700">City</label>
+        <input id="city" formControlName="city" class="w-full px-3 py-2 border rounded">
+        <div *ngIf="address.get('city')?.invalid && address.get('city')?.touched" class="text-red-500">
+          City is required.
+        </div>
+
+        <label for="state" class="block text-gray-700">State</label>
+        <input id="state" formControlName="state" class="w-full px-3 py-2 border rounded">
+        <div *ngIf="address.get('state')?.invalid && address.get('state')?.touched" class="text-red-500">
+          State is required.
+        </div>
+
+        <label for="zip" class="block text-gray-700">ZIP Code</label>
+        <input id="zip" formControlName="zip" class="w-full px-3 py-2 border rounded">
+        <div *ngIf="address.get('zip')?.invalid && address.get('zip')?.touched" class="text-red-500">
+          ZIP Code is required.
+        </div>
+
+        <button type="button" (click)="removeAddress(i)" class="mt-2 bg-red-600 text-white py-1 px-4 rounded hover:bg-red-700">Remove Address</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addAddress()" class="mb-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Add Address</button>
+
+    <button type="submit" [disabled]="registrationForm.invalid" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">Register</button>
+  </form>
+</div>
