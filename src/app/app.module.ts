@@ -17,6 +17,9 @@ import { LoginComponent } from './login/login.component';
 import { ContentexampleComponent } from './contentexample/contentexample.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomValidators } from './validators/custom-validators';
+import { WeatherComponent } from './weather/weather.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -32,12 +35,14 @@ import { CustomValidators } from './validators/custom-validators';
     CombinationOperatorsComponent,
     RegistrationComponent,
     LoginComponent,
-    ContentexampleComponent
+    ContentexampleComponent,
+    WeatherComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

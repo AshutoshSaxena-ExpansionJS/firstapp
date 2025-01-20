@@ -8,6 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ContentexampleComponent } from './contentexample/contentexample.component';
+import { WeatherComponent } from './weather/weather.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'filtering-operators', component: FilteringOperatorsComponent },
       { path: 'combination-operators', component: CombinationOperatorsComponent },
       { path: 'contentexample', component: ContentexampleComponent },
+      {path:  'weather', component: WeatherComponent},
       { path: '**', redirectTo: '/creation-operators' }
     ]
   }
