@@ -17,7 +17,10 @@ export class RegistrationComponent implements OnInit {
     this.registrationForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, CustomValidators.passwordStrength]],
+      passwordGroup: this.fb.group({
+        password: ['', [Validators.required, CustomValidators.passwordStrength]],
+        confirmPassword: ['', Validators.required]
+      }, { validators: this.passwordMatchValidator }),
       addresses: this.fb.array([this.createAddress()])
     });
   }
@@ -41,6 +44,12 @@ export class RegistrationComponent implements OnInit {
 
   removeAddress(index: number): void {
     this.addresses.removeAt(index);
+  }
+
+  passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
+    const password = group.get('password')?.value;
+    const confirmPassword = group.get('confirmPassword')?.value;
+    return password === confirmPassword ? null : { mismatch: true };
   }
 
   onSubmit(): void {
