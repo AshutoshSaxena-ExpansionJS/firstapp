@@ -12,6 +12,8 @@ import { catchError } from 'rxjs/operators';
 export class WeatherComponent implements OnInit {
   weatherData: any;
   errorMessage: string = '';
+  city: string = 'Lucknow';
+
 
   constructor(private http: HttpClient) {}
 
@@ -24,14 +26,22 @@ export class WeatherComponent implements OnInit {
 
   getWeatherData(): Observable<any> {
     const apiKey = '23820aa8d4554156bf551441243012';
-    const city = 'Shiganshina';
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
+    const url = `http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${this.city}`;
 
     return this.http.get(url).pipe(
       catchError(error => {
         this.errorMessage = 'Failed to fetch weather data';
         return throwError(this.errorMessage);
       })
+    );
+  }
+
+  updateCity(newCity: string): void {
+    this.city = newCity;
+    localStorage.setItem('city', newCity);
+    this.getWeatherData().subscribe(
+      data => this.weatherData = data,
+      error => this.errorMessage = error
     );
   }
 }
