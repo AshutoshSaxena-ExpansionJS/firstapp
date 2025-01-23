@@ -33,6 +33,19 @@
       </div>
     </div>
 
+    <div class="mb-4">
+      <label for="dateOfBirth" class="block text-gray-700">Date of Birth</label>
+      <mat-form-field appearance="fill" class="w-full">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div *ngIf="registrationForm.get('dateOfBirth')?.invalid && registrationForm.get('dateOfBirth')?.touched" class="text-red-500">
+        Date of Birth is required.
+      </div>
+    </div>
+
     <div formArrayName="addresses">
       <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i" class="mb-4">
         <label for="street" class="block text-gray-700">Street</label>

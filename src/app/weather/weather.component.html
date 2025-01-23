@@ -6,6 +6,12 @@
       <p><strong>City:</strong> {{ weatherData.location.name }}</p>
       <p><strong>Temperature:</strong> {{ weatherData.current.temp_c }} °C</p>
       <p><strong>Condition:</strong> {{ weatherData.current.condition.text }}</p>
+      <!-- <div [@slideInOut]>
+        <img *ngIf="condition.includes('sunny') || condition.includes('clear')" src="sunny.png" alt="Sunny">
+        <img *ngIf="condition.includes('sunny') && !condition.includes('cloudy')" src="cloudy.png" alt="Cloudy">
+        <img *ngIf="condition.includes('night') && !condition.includes('cloudy')" src="night.png" alt="Night">
+        <img *ngIf="condition.includes('cloudy') && condition.includes('night')" src="cloudy-night.png" alt="Cloudy Night">
+      </div> -->
     </div>
     <div *ngIf="errorMessage" class="text-red-500">
       {{ errorMessage }}

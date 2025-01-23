@@ -21,6 +21,7 @@ export class RegistrationComponent implements OnInit {
         password: ['', [Validators.required, CustomValidators.passwordStrength]],
         confirmPassword: ['', Validators.required]
       }, { validators: this.passwordMatchValidator }),
+      dateOfBirth: ['', Validators.required],
       addresses: this.fb.array([this.createAddress()])
     });
   }
