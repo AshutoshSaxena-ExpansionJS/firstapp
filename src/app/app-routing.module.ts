@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { ContentexampleComponent } from './contentexample/contentexample.component';
 import { WeatherComponent } from './weather/weather.component';
+import { ZonelessExampleComponent } from './zoneless-example/zoneless-example.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'combination-operators', component: CombinationOperatorsComponent },
       { path: 'contentexample', component: ContentexampleComponent },
       {path:  'weather', component: WeatherComponent},
+      { path: 'zoneless-example', component: ZonelessExampleComponent },
       { path: '**', redirectTo: '/creation-operators' }
     ]
   }

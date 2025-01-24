@@ -29,6 +29,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ZonelessExampleComponent } from './zoneless-example/zoneless-example.component';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     RegistrationComponent,
     LoginComponent,
     ContentexampleComponent,
-    WeatherComponent
+    WeatherComponent,
+    ZonelessExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideExperimentalZonelessChangeDetection()
   ],
   bootstrap: [AppComponent]
 })
